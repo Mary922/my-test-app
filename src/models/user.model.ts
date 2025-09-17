@@ -6,7 +6,7 @@ enum RoleTypes {
 }
 
 interface IUserAttributes {
-    id: number,
+    id?: number,
     name: string,
     birthdate: Date,
     email: string,

@@ -23,7 +23,7 @@ async function startApp(): Promise<void> {
 
         await initializeDatabase();
 
-        app.use('/auth', AuthRoutes);
+        app.use('/api', AuthRoutes);
 
         // 404 handler
         app.use((req, res) => {

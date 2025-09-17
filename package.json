@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/app.js",
     "dev": "nodemon --exec tsx src/app.ts",
-    "seed-users": "node dist/database/seeds/seed-user.js"
+    "seed-users": "node dist/database/seeds/seed-user.js",
+    "test-validation": "node dist/scripts/test-validation.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "@types/cors": "^2.8.19",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
+    "@types/hapi__joi": "^17.1.15",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.4.0",
     "@types/sequelize": "^4.28.20",
@@ -26,6 +28,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
