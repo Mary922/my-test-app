@@ -4,7 +4,8 @@ import express from 'express';
 import cors from 'cors';
 import { initializeDatabase, initModels } from './database/initialize';
 import { sequelize } from './database/connection';
-import AuthRoutes from './routes/auth-routes'
+import AuthRoutes from './routes/auth-routes';
+import UsersRoutes from './routes/users-routes';
 
 dotenv.config();
 const app = express();
@@ -24,6 +25,8 @@ async function startApp(): Promise<void> {
         await initializeDatabase();
 
         app.use('/api', AuthRoutes);
+        app.use('/api', UsersRoutes);
+
 
         // 404 handler
         app.use((req, res) => {
@@ -38,7 +41,6 @@ async function startApp(): Promise<void> {
         process.exit(1);
     }
 }
-
 
 startApp();
 

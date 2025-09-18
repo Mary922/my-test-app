@@ -5,13 +5,12 @@ import { validateUserData } from '../middlewares/validation/validate-user';
 
 
 export const registerUser = async (req: Request, res: Response) => {
-    // const { name, birthdate, email, password } = req.body;
-    console.log('DATAS', req.body);
+    const { name, birthdate, email, password } = req.body;
 
     try {
         const validationResult = validateUserData(req.body);
         console.log('Validation result:', validationResult);
-        
+
         if (!validationResult.isValid) {
             return res.status(400).json({
                 success: false,
@@ -19,19 +18,25 @@ export const registerUser = async (req: Request, res: Response) => {
                 message: 'Ошибка валидации данных'
             });
         }
+
         const { name, birthdate, email, password } = validationResult.validatedData!;
 
-         // Проверка на существующего пользователя
-        const existingUser = await User.findOne({ where: { email } });
-        if (existingUser) {
+        const existingActiveUser = await User.findOne(
+            {
+                where: {
+                    email,
+                    deactivatedAt: null
+                }
+            });
+        if (existingActiveUser) {
             return res.status(409).json({
                 success: false,
                 message: 'Пользователь с таким email уже существует'
             });
         }
-        
-        const hashedPassword = await bcrypt.hashSync(password, 10);
-        
+
+        const hashedPassword = bcrypt.hashSync(password, 10);
+
         const newUser = await User.create({
             name,
             birthdate,

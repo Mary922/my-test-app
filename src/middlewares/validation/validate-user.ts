@@ -68,7 +68,7 @@ export const validateUserData = (data: any) => {
       message: detail.message,
       type: detail.type
     }));
-    
+
     return {
       isValid: false,
       errors: errorMessages,
@@ -91,9 +91,9 @@ export const validateUserData = (data: any) => {
 export function testUserValidation(testData: any) {
   console.log('=== ТЕСТ ВАЛИДАЦИИ ===');
   console.log('Входные данные:', testData);
-  
+
   const result = validateUserData(testData);
-  
+
   if (result.isValid) {
     console.log('✅ Валидация успешна');
     console.log('Обработанные данные:', result.validatedData);
@@ -103,7 +103,7 @@ export function testUserValidation(testData: any) {
       console.log(`  ${error.field}: ${error.message}`);
     });
   }
-  
+
   console.log('=====================\n');
   return result;
 };

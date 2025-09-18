@@ -45,7 +45,6 @@ export function initUserModel(sequelize: Sequelize): void {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
         validate: {
             isEmail: true
         }
