@@ -4,7 +4,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./src",
     "strict": true,
     "verbatimModuleSyntax": false,
     "esModuleInterop": true,
@@ -13,6 +13,6 @@
     "sourceMap": true,
     "types": ["node"],
   },
-  "include": ["src/**/*", "app.ts"],
+  "include": ["src/**/*", "app.ts","types/custom.d.ts"],
   "exclude": ["node_modules","dist"]
 }
